@@ -29,7 +29,6 @@
         };
 
         function generalSuccessFn(response) {
-                alert("Succesfully deleted");
                 window.location = '#/list';
         }
 
@@ -67,7 +66,6 @@
         };
 
         function registerSuccessFn(response) {
-                alert(response.data.email);
                 window.location = '#/list';
         }
 
