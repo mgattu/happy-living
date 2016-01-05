@@ -18,7 +18,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 
-from locations import urls as locations_urls
 from users import urls as users_urls
 from hhli import settings
 from users import views as user_views
@@ -38,7 +37,6 @@ router.register(r'edit_users', users_viewsets.HUserEditViewSet)
 urlpatterns = [
     url(r'^$', user_views.index, name='index'),
     url(r'^users/', include(users_urls)),
-	url(r'^locations/', include(locations_urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

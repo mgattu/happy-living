@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
-    'locations.apps.LocationsConfig',
     # 'rest_framework',
     'material',
     # 'material.admin',
