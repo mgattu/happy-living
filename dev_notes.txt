@@ -1,0 +1,229 @@
+Change your models (in models.py).
+
+###to create migrations for those changes
+
+ 	python manage.py makemigrations
+
+###to apply those changes to the database.
+
+	python manage.py migrate 
+
+from locations.models import State,District,Constituency,Mandal,Village
+from django.utils import timezone
+
+## state
+
+
+s1 = State(name="Telangana", created_at=timezone.now(),updated_at=timezone.now())
+s2 = State(name="Andhra", created_at=timezone.now(),updated_at=timezone.now())
+
+s1.district_set.all()
+
+## districts
+
+s1 = State.objects.get(pk=1)
+s2 = State.objects.get(pk=2)
+s1.district_set.create(name="Mahabub Nagar", created_at=timezone.now(),updated_at=timezone.now())
+s1.district_set.create(name="Medak", created_at=timezone.now(),updated_at=timezone.now())
+s2.district_set.create(name="Nellore", created_at=timezone.now(),updated_at=timezone.now())
+s2.district_set.create(name="Kadapa", created_at=timezone.now(),updated_at=timezone.now())
+
+>>> s2.district_set.all()
+>>> s2.district_set.count()
+>>> s2.district_set.filter(name='Kadapa')
+
+python manage.py runserver
+python manage.py migrate
+python manage.py createsuperuser
+
+
+<!-- NAVBAR ==========================================   -->
+<div class="navbar-wrapper">
+
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="home">Home</a></li>
+            <li><a href="/pages/about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+            {% if user %}
+              <li><a href="sign_out">Logout</a></li>
+            {% else %}
+            <li><a href="sign_in">Login</a></li>
+            {% endif %}
+            <li><a href="register">Register</a></li>
+           </ul>
+      </div> <!-- end container -->
+    </div> <!-- end navbar -->
+
+</div><!-- end navbar-wrapper -->
+
+
+
+http://stackoverflow.com/questions/8764288/href-automatically-adds-to-current-page-url-in-php-cant-figure-it-out
+
+http://www.mediacollege.com/internet/html/hyperlinks.html
+
+http://webdesign.tutsplus.com/articles/quick-tip-set-relative-urls-with-the-base-tag--cms-21399
+
+
+
+Unexpected
+
+<div class="col-md-4 col-md-offset-4">
+<h2>Login Page</h2>
+        {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+                  <li{% if message.tags %} class="has-error"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+
+{% load crispy_forms_tags %}
+{% crispy form %}
+
+
+        {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+                  <li{% if message.tags %} class="has-error"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+
+
+
+
+from users.models import Customer
+from users.serializers import CustomerSerializer
+c = Customer.objects.latest('created_at')
+s_c = CustomerSerializer(c)
+s_c.data.get('email')
+
+
+https://aaronpresley.com/add-confirm-password-field-to-userserializer-in-django-rest-framework/
+
+https://daneden.github.io/animate.css/
+
+https://github.com/Augus/ngAnimate
+http://www.yearofmoo.com/2014/09/taming-forms-in-angularjs-1-3.html
+
+
+
+<form name="myForm">
+  <input type="text" name="colorCode" ng-model="data.colorCode" minlength="6" required />
+  <div ng-messages="myForm.colorCode.$error" ng-if="myForm.$submitted || myForm.colorCode.$touched">
+    <div ng-message="required">...</div>
+    <div ng-message="minlength">...</div>
+    <div ng-message="pattern">...</div>
+  </div>
+  <nav class="actions">
+    <input type="submit" />
+  </nav>
+</form>
+
+
+
+<!-- <html ng-app="happyApp">
+    <head>
+        <title> Happy and Healthy Living In India </title>
+        {% include 'css.html' %}
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="row top-buffer">
+        <div class="col-md-10 centre" ng-view> </div>                                         {% include 'javascripts.html' %}   
+    </body>
+</html>  -->
+
+angular material
+
+
+layout="column" layout-align="top center"
+
+https://www.youtube.com/watch?v=lvGAgul5QT4
+
+
+<html ng-app="happyApp">
+    <head>
+        <title> Happy and Healthy Living In India </title>
+        {% include 'css.html' %}
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <div></div>
+    </head>
+
+
+  <body ng-app="happyApp" layout="column" >
+
+     <md-toolbar> 
+       <div class="md-toolbar-tools">
+          <span class="md-flex"> Search</span>
+       </div>
+     </md-toolbar>
+
+     <div class="content" layout="row" flex>
+
+        <md-sidenav layout="column" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')"
+        class="md-whiteframe-z2">
+
+        <md-list>
+
+          <md-list-item>
+              <md-button>
+              <md-icon md-svg-src="./src/abc.jpg"></md-icon> Mahesh
+            </md-button>  
+          </md-list-item>
+
+          <md-list-item>
+              <md-button>
+              <md-icon md-svg-src="./src/abc.jpg"></md-icon> Ramesh
+            </md-button>  
+          </md-list-item>
+
+
+        </md-list>
+
+        </md-sidenav>
+
+
+         <md-content  id="content" flex>
+
+          <h2>Lia Luogo</h2>
+          <p>
+            I love cheese...</br>
+            
+          </p>
+        </md-content>
+      
+     </div>
+
+
+
+      {% include 'javascripts.html' %} 
+
+    </body>
+
+  </html>
+
+
+
+
+
+
+Git fundamentals:
+================
+
+
+git clone https://github.com/mthipparthi/happy-living.git
+

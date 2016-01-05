@@ -1,0 +1,22 @@
+<h1>Users List</h1>
+
+
+<a ui-sref="newMovie" class="btn-primary btn-lg nodecoration">Add New Movie</a>
+
+<table class="table-striped table-bordered table">
+  <tr>
+    <td><h3>All Users</h3></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="user in users">
+    <td>{{user.email}}</td>
+    <td>{{user.first_name}}</td>
+    <td>{{user.last_name}}</td>
+    <td>
+      <a class="btn btn-primary" href="#/showuser/{{user.id}}">View</a>
+      <a class="btn btn-danger"  ng-click="deleteUser(user)">Delete</a>
+    </td>
+  </tr>
+</table>
