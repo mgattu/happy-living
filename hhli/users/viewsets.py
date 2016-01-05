@@ -20,6 +20,9 @@ class HUserViewSet(viewsets.ModelViewSet):
         if self.request.method == 'POST':
             return (permissions.AllowAny(),)
 
+        if self.request.method == 'DELETE':
+            return (permissions.AllowAny(),)
+
         return (permissions.IsAuthenticated(), IsHUserOwner(),)
 
     def create(self, request):

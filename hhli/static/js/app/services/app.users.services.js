@@ -23,6 +23,21 @@
             return $http.get('/api/v1/users/'+ id);
         };
 
+        this.deleteUser = function(id){
+            return $http.delete('/api/v1/users/'+ id).
+            then(generalSuccessFn, generalErrorFn);
+        };
+
+        function generalSuccessFn(response) {
+                alert("Succesfully deleted");
+                window.location = '#/list';
+        }
+
+        function generalErrorFn(response) {
+              alert("Could not delete");
+              console.error('Epic failure!');
+        }
+
         this.updateUserdetail = function(vm){
            return $http.put('/api/v1/edit_users/'+vm.id + '/', 
             { 
@@ -37,6 +52,7 @@
 
 
         this.register = function(vm){
+
            return $http.post('/api/v1/users/', 
             { 
               first_name: vm.first_name,
@@ -51,9 +67,8 @@
         };
 
         function registerSuccessFn(response) {
-                alert(response.status);
                 alert(response.data.email);
-                window.location = '/';
+                window.location = '#/list';
         }
 
         function registerErrorFn(response) {

@@ -2,6 +2,10 @@
     angular.module('happyApp', ['ngRoute', 'ngMaterial']);
     angular.module('happyApp').config(function($routeProvider){
         $routeProvider
+                .when('/',{
+                    controller: 'CustomerController',
+                    templateUrl: 'static/js/app/views/user_list.html'
+                 })
                 .when('/register/',{
                     controller: 'CustomerController',
                     templateUrl: 'static/js/app/views/register.html'
@@ -17,10 +21,6 @@
                 .when('/edituser/:id',{
                     controller: 'CustomerEditController',
                     templateUrl: 'static/js/app/views/user_edit.html'
-                 })
-                .when('/orderss/:customerId',{
-                    controller: 'OrdersController',
-                    templateUrl: 'app/views/orders.html'
                  })
                 .otherwise({redirectTo: '/' });
         });

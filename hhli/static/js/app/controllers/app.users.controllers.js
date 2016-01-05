@@ -1,10 +1,8 @@
 (function () {  
     function CustomerController($scope,$log, CustomerService) {
 
-
         $scope.users = [];
 
-    
         function init(){
            
             CustomerService.userList()
@@ -22,23 +20,13 @@
         
         init();
 
-        
-
         $scope.register = function () {
             CustomerService.register($scope.vm);
         }; 
 
-        $scope.login = function () {
-            CustomerService.register($scope.email, $scope.password);
-        }; 
-
-        $scope.list = function () {
-            CustomerService.userList();
-        }; 
-
-        $scope.editCustomerdetails = function () {
-            CustomerService.register($scope.email, $scope.password, $scope.first_name);
-        }; 
+        $scope.deleteuser = function(id) {
+            CustomerService.deleteUser(id);
+        };
     };
     
     angular.module('happyApp').controller('CustomerController',CustomerController);
