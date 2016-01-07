@@ -39,14 +39,13 @@ class HUserManager(BaseUserManager):
         birth and password.
         """
 
-        a = {
-                'email': email,
-                'password':password,
-                'first_name':first_name 
-            }
+        user = self.model(
+            email           = self.normalize_email(email),
+            first_name      = first_name,
+            is_admin = True
+        )
 
-        user = self.create_user(a)
-        user.is_admin = True
+        user.set_password(password)
         user.save(using=self._db)
         return user
 
